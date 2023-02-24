@@ -1,7 +1,8 @@
 import cv2
 import numpy as np
 import tkinter as tk
-from tkinter import filedialog
+from tkinter import filedialog, messagebox
+
 
 # Create a root window
 root = tk.Tk()
@@ -43,6 +44,17 @@ def mouse_callback(event, x, y, flags, params):
 
             # Display the original and corrected images
             cv2.imshow("Corrected", corrected_img)
+            response = messagebox.askyesno(title="Save Image", message="Do you want to save the image?")
+            
+            if response == 1:
+                file_path = filedialog.asksaveasfilename(defaultextension=".jpg")
+                print(file_path)
+                cv2.imwrite(file_path, corrected_img)
+                cv2.destroyAllWindows()
+                exit()
+            else:
+                cv2.destroyAllWindows()
+                exit()
             cv2.waitKey(0)
             cv2.destroyAllWindows()
 
