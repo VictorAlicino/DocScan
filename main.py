@@ -6,8 +6,10 @@ from dataclasses import dataclass
 
 @dataclass
 class dst_size:
-    width: int = 480
-    height: int = 854
+    factor: int = 5
+
+    width: int = 210 * factor
+    height: int = 297 * factor
 
 filepath: str = ""
 
@@ -98,8 +100,3 @@ if __name__ == "__main__":
     # Wait for a key press
     cv2.waitKey(0)
     cv2.destroyAllWindows()
-
-
-
-    
-
